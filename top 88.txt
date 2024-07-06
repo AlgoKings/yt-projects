@@ -1,0 +1,20 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        if (not nums1 or not nums2):
+            return
+        cur=m
+        left_arr_index=0
+        while (cur<len(nums1) and left_arr_index<len(nums2)):
+            nums1[cur]=nums2[left_arr_index]
+            left_arr_index+=1
+            cur+=1
+        #now implement your favorite sort aglo...
+        for i in range(len(nums1)):
+            min_index=i
+            for j in range(i,len(nums1)):
+                if (nums1[j]<nums1[min_index]):
+                    min_index=j
+            nums1[min_index], nums1[i]=nums1[i], nums1[min_index]
